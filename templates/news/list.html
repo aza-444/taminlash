@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Yangiliklar - IES{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h1 class="text-center mb-5">PRESS MARKAZI</h1>
+        
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Kategoriyalar</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="{% url 'news:list' %}" class="text-decoration-none">Barcha yangiliklar</a></li>
+                            {% for cat in categories %}
+                            <li><a href="{% url 'news:category' cat.slug %}" class="text-decoration-none">{{ cat.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="row g-4">
+                    {% for item in news %}
+                    <div class="col-md-4">
+                        <div class="news-card">
+                            {% if item.image %}
+                            <img src="{{ item.image.url }}" class="w-100" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                            <div style="height: 200px; background: linear-gradient(135deg, #0066cc, #004080);"></div>
+                            {% endif %}
+                            <div class="p-3">
+                                <small class="text-muted">{{ item.published_date|date:"d M Y" }}</small>
+                                <h5><a href="{% url 'news:detail' item.slug %}" class="text-decoration-none text-dark">{{ item.title }}</a></h5>
+                                <p class="text-muted">{{ item.excerpt|truncatewords:15 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <div class="alert alert-info text-center">
+                            <p>Hozircha yangiliklar yo'q. Admin panel orqali yangilik qo'shing.</p>
+                            <a href="/admin/" class="btn btn-primary">Admin panelga o'tish</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                {% if news.has_other_pages %}
+                <nav class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        {% if news.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ news.previous_page_number }}">Oldingi</a></li>
+                        {% endif %}
+                        <li class="page-item active"><span class="page-link">{{ news.number }}</span></li>
+                        {% if news.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ news.next_page_number }}">Keyingi</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}So'rovnoma - IES{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">ONLAYN SO'ROVNOMA</h1>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body p-5">
+                        {% if surveys %}
+                        <div id="surveyForm">
+                            {% for survey in surveys %}
+                            <div class="mb-4 pb-4 border-bottom">
+                                <h5>{{ survey.step_number }}. {{ survey.question }}</h5>
+                                <div class="mt-3">
+                                    {% for choice in survey.choices.all %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="survey_{{ survey.id }}" value="{{ choice.id }}" id="choice_{{ choice.id }}">
+                                        <label class="form-check-label" for="choice_{{ choice.id }}">
+                                            {{ choice.choice_text }}
+                                        </label>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <button type="button" class="btn btn-primary btn-lg" onclick="alert('So\'rovnoma funksiyasi hozirda ishlab chiqilmoqda')">Yuborish</button>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info text-center">
+                            <p>Hozircha faol so'rovnomalar yo'q. Admin panel orqali so'rovnoma qo'shing.</p>
+                            <a href="/admin/" class="btn btn-primary">Admin panelga o'tish</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

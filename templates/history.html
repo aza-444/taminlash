@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Tarix - IES{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">O'ZBEKISTON ENERGETIKA TIZIMI TARIXI VA RIVOJLANISHI</h1>
+        
+        {% if history %}
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <h2 class="display-3 text-primary">{{ history.year_start }}</h2>
+                        </div>
+                        <div class="history-content">
+                            {{ history.content|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center">
+            <p>Tarix ma'lumotlari admin panel orqali qo'shilishi kerak.</p>
+            <a href="/admin/" class="btn btn-primary">Admin panelga o'tish</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ news.title }} - IES{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <article>
+                    <h1 class="mb-4">{{ news.title }}</h1>
+                    <div class="mb-4">
+                        <span class="badge bg-primary">{{ news.category.name }}</span>
+                        <span class="text-muted ms-3">{{ news.published_date|date:"d M Y" }}</span>
+                        <span class="text-muted ms-3">Ko'rildi: {{ news.views }}</span>
+                    </div>
+                    
+                    {% if news.image %}
+                    <img src="{{ news.image.url }}" class="img-fluid mb-4 w-100" style="max-height: 400px; object-fit: cover;">
+                    {% endif %}
+                    
+                    <div class="news-content">
+                        {{ news.content|safe }}
+                    </div>
+                </article>
+                
+                {% if related_news %}
+                <section class="mt-5">
+                    <h3>O'xshash yangiliklar</h3>
+                    <div class="row g-4 mt-3">
+                        {% for item in related_news %}
+                        <div class="col-md-4">
+                            <div class="news-card">
+                                {% if item.image %}<img src="{{ item.image.url }}" class="w-100" style="height: 150px; object-fit: cover;">{% endif %}
+                                <div class="p-3">
+                                    <h6><a href="{% url 'news:detail' item.slug %}" class="text-decoration-none text-dark">{{ item.title|truncatewords:10 }}</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+                
+                <div class="mt-4">
+                    <a href="{% url 'news:list' %}" class="btn btn-primary">Barcha yangiliklarga qaytish</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

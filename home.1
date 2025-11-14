@@ -1,0 +1,343 @@
+<!--{% extends 'base.html' %}-->
+
+<!--{% block content %}-->
+<!--<div class="hero-carousel">-->
+<!--    <div class="swiper heroSwiper">-->
+<!--        <div class="swiper-wrapper">-->
+<!--            {% for slide in carousel_slides %}-->
+<!--            <div class="swiper-slide" style="{% if slide.image %}background-image: url('{{ slide.image.url }}');{% else %}background: linear-gradient(135deg, #0066cc, #004080);{% endif %}">-->
+<!--                <h1 class="hero-title">{{ slide.title }}</h1>-->
+<!--            </div>-->
+<!--            {% empty %}-->
+<!--            <div class="swiper-slide" style="background: linear-gradient(135deg, #0066cc, #004080);">-->
+<!--                <h1 class="hero-title">Bizning maqsadimiz - ilg'or va muvaffaqiyatli energetika kompaniyasiga aylanish</h1>-->
+<!--            </div>-->
+<!--            <div class="swiper-slide" style="background: linear-gradient(135deg, #004080, #0066cc);">-->
+<!--                <h1 class="hero-title">Bizning ustuvorliklarimiz - innovatsion rivojlanish, ekologik xavfsizlik va iqtisodiy samaradorlik</h1>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--        <div class="swiper-pagination"></div>-->
+<!--        <div class="swiper-button-prev"></div>-->
+<!--        <div class="swiper-button-next"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<section class="py-5" data-aos="fade-up">-->
+<!--    <div class="container">-->
+
+<!--        <div class="quick-links-grid">-->
+<!--            {% for link in quick_links %}-->
+<!--                <a href="{{ link.link }}" class="quick-link-card">-->
+<!--                    <div class="quick-link-icon">-->
+<!--                        {% if link.icon %}-->
+<!--                            <img src="{{ link.icon.url }}" alt="{{ link.title }}">-->
+<!--                        {% else %}-->
+<!--                            <div class="quick-link-empty"></div>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+<!--                    <p class="quick-link-title">{{ link.title }}</p>-->
+<!--                </a>-->
+<!--            {% empty %}-->
+<!--                <a class="quick-link-card"><p class="quick-link-title">Kasaba uyushmasi</p></a>-->
+<!--                <a class="quick-link-card"><p class="quick-link-title">Korrupsiyaga qarshi chora-tadbirlar</p></a>-->
+<!--                <a class="quick-link-card"><p class="quick-link-title">Tenderlar</p></a>-->
+<!--                <a class="quick-link-card"><p class="quick-link-title">Ma'lumot so‘rash</p></a>-->
+<!--                <a class="quick-link-card"><p class="quick-link-title">Vakansiyalar</p></a>-->
+<!--                <a class="quick-link-card"><p class="quick-link-title">Ochiq ma'lumotlar</p></a>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</section>-->
+
+
+<!--<section class="py-5 bg-light" data-aos="fade-up">-->
+<!--    <div class="container">-->
+<!--        <h2 class="text-center mb-5">PRESS MARKAZI</h2>-->
+<!--        <div class="row g-4">-->
+<!--            {% for news in latest_news %}-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="news-card">-->
+<!--                    {% if news.image %}<img src="{{ news.image.url }}" class="w-100" style="height: 200px; object-fit: cover;">{% endif %}-->
+<!--                    <div class="p-3">-->
+<!--                        <small class="text-muted">{{ news.published_date|date:"d M Y" }}</small>-->
+<!--                        <h5>{{ news.title }}</h5>-->
+<!--                        <p class="text-muted">{{ news.excerpt|truncatewords:20 }}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% empty %}-->
+<!--            <div class="col-12"><p class="text-center">Hozircha yangiliklar yo'q. Admin panel orqali yangilik qo'shing.</p></div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--<section class="py-5" data-aos="fade-up">-->
+<!--    <div class="container">-->
+<!--        <h2 class="text-center mb-5">ASOSIY KO'RSATKICHLAR</h2>-->
+<!--        <div class="row g-4">-->
+<!--            {% for indicator in key_indicators %}-->
+<!--            <div class="col-md-3">-->
+<!--                <div class="stats-card">-->
+<!--                    <div class="stats-value">{{ indicator.value }}</div>-->
+<!--                    <div class="mt-2">{{ indicator.unit }}</div>-->
+<!--                    <div class="mt-2">{{ indicator.title }}</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% empty %}-->
+<!--            <div class="col-md-3"><div class="stats-card"><div class="stats-value">8 764</div><div class="mt-2">MWh</div><div class="mt-2">O'rnatilgan quvvat</div></div></div>-->
+<!--            <div class="col-md-3"><div class="stats-card"><div class="stats-value">32</div><div class="mt-2">mlrd kWh</div><div class="mt-2">2024 yilda ishlab chiqarilgan elektr energiyasi</div></div></div>-->
+<!--            <div class="col-md-3"><div class="stats-card"><div class="stats-value">6 774</div><div class="mt-2">MWh</div><div class="mt-2">Mavjud quvvat</div></div></div>-->
+<!--            <div class="col-md-3"><div class="stats-card"><div class="stats-value">11,1</div><div class="mt-2">mln Gkal</div><div class="mt-2">2024 yilda ishlab chiqarilgan issiqlik energiyasi</div></div></div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--<section class="py-5 bg-light text-center" data-aos="fade-up">-->
+<!--    <div class="container">-->
+<!--        <h2>O'ZBEKISTON ENERGETIKA TIZIMI TARIXI VA RIVOJLANISHI</h2>-->
+<!--        <p class="lead mt-3">O'zbekiston energetika sektori - iqtisodiyotning eng muhim, asosiy, yuqori texnologiyali sohasi</p>-->
+<!--        <h3 class="display-4 text-primary">1924</h3>-->
+<!--        <a href="/admin/" class="btn btn-primary btn-lg mt-3">IES tarixi</a>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--<section class="py-5" data-aos="fade-up">-->
+<!--    <div class="container">-->
+<!--        <h2 class="text-center mb-5">Foydali davlat saytlari</h2>-->
+<!--        <div class="row g-4">-->
+<!--            {% for link in government_links|slice:":8" %}-->
+<!--            <div class="col-md-3">-->
+<!--                <a href="{{ link.url }}" target="_blank" class="text-decoration-none">-->
+<!--                    <div class="quick-link-card">-->
+<!--                        {% if link.logo %}<img src="{{ link.logo.url }}" alt="{{ link.name }}" style="height: 50px; object-fit: contain;">{% else %}<div style="width: 50px; height: 50px; background: var(&#45;&#45;secondary-color); border-radius: 8px; margin: 0 auto;"></div>{% endif %}-->
+<!--                        <p class="mt-3 small">{{ link.name }}</p>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            {% empty %}-->
+<!--            <div class="col-12"><p class="text-center">Admin panel orqali davlat saytlari qo'shing.</p></div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--{% endblock %}-->
+
+<!--{% block extra_js %}-->
+<!--<script>-->
+<!--    const swiper = new Swiper('.heroSwiper', {-->
+<!--        loop: true,-->
+<!--        autoplay: {-->
+<!--            delay: 5000,-->
+<!--            disableOnInteraction: false,-->
+<!--        },-->
+<!--        pagination: {-->
+<!--            el: '.swiper-pagination',-->
+<!--            clickable: true,-->
+<!--        },-->
+<!--        navigation: {-->
+<!--            nextEl: '.swiper-button-next',-->
+<!--            prevEl: '.swiper-button-prev',-->
+<!--        },-->
+<!--    });-->
+<!--</script>-->
+<!--{% endblock %}-->
+<!--20:51 14:11:2025-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- TOP CAROUSEL -->
+<div class="top-carousel container">
+    <div class="carousel swiper heroSwiper">
+        <div class="swiper-wrapper">
+            {% for slide in carousel_slides %}
+            <div class="swiper-slide top-carousel__item">
+                <a href="{{ slide.url }}" class="d-block w-100 h-100">
+                    {% if slide.image %}
+                        <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="carousel-card__img">
+                    {% else %}
+                        <img src="/static/img/default.jpg" alt="Default Slide" class="carousel-card__img">
+                    {% endif %}
+                    <div class="top-carousel__content">
+                        <h2>{{ slide.title|default:"Slayder qo‘shilmagan" }}</h2>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class="swiper-slide top-carousel__item">
+                <img src="/static/img/default.jpg" alt="Default Slide" class="carousel-card__img">
+                <div class="top-carousel__content">
+                    <h2>Slayder qo‘shilmagan</h2>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    const swiper = new Swiper('.heroSwiper', {
+        loop: true,
+        autoplay: { delay: 5000 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+</script>
+{% endblock %}
+
+<!--&lt;!&ndash; TOP CAROUSEL &ndash;&gt;-->
+<!--<div class="carousel-cardbox&#45;&#45;wrapper">-->
+<!--    {% for slide in carousel_slides %}-->
+<!--    <a href="{{slide.url}}"></a>-->
+<!--    <div class="carousel-card-->
+<!-- d-flex-->
+<!-- flex-column-->
+<!-- justify-content-center-->
+<!-- align-items-center-->
+<!-- ">{% if slide.image %}&ndash;&gt;-->
+<!--        <img src="" alt="">-->
+<!--        {% else %}-->
+<!--        <img src="/static/img/default.jpg" alt="Default Slide">-->
+<!--        {% endif %}-->
+<!--        <div class="top-carousel__content">-->
+<!--            <h2>{{ slide.title|default:"Slayder qo‘shilmagan" }}</h2>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--    <img src="{{ slide.image.url }}"-->
+<!--         alt="{{ slide.title }}"-->
+<!--         class="carousel-card__img">-->
+<!--    <p class="carousel-card__title">{{ slide.title }}</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div class="top-carousel container">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="carousel swiper heroSwiper">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="swiper-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;            {% for slide in carousel_slides %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="swiper-slide top-carousel__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                {% if slide.image %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <img src="{{ slide.image.url }}" alt="{{ slide.title }}">&ndash;&gt;-->
+<!--&lt;!&ndash;                {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <img src="/static/img/default.jpg" alt="Default Slide">&ndash;&gt;-->
+<!--&lt;!&ndash;                {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="top-carousel__content">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h2>{{ slide.title|default:"Slayder qo‘shilmagan" }}</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="swiper-pagination"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="swiper-button-prev"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="swiper-button-next"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!-- QUICK LINKS -->
+<section class="py-5">
+    <div class="container">
+        <div class="quick-links-grid">
+            {% for link in quick_links %}
+            <a href="{{ link.link }}" class="quick-link-card">
+                <div class="quick-link-icon">
+                    {% if link.icon %}
+                    <img src="{{ link.icon.url }}" alt="{{ link.title }}">
+                    {% else %}
+                    <div class="quick-link-empty"></div>
+                    {% endif %}
+                </div>
+                <p class="quick-link-title">{{ link.title }}</p>
+            </a>
+            {% empty %}
+            <p>Quick links mavjud emas.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- NEWS -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="section-title"><h2>PRESS MARKAZI</h2></div>
+        <div class="row g-4">
+            {% for n in latest_news %}
+            <div class="col-md-4">
+                <div class="news-card">
+                    {% if n.image %}
+                    <img src="{{ n.image.url }}" class="news-img" alt="{{ n.title }}">
+                    {% endif %}
+                    <div class="p-3">
+                        <small class="text-muted">{{ n.published_date|date:"d M Y" }}</small>
+                        <h5>{{ n.title }}</h5>
+                        <p>{{ n.excerpt|truncatewords:20 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Yangiliklar mavjud emas.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="py-5">
+    <div class="container">
+        <div class="section-title"><h2>ASOSIY KO‘RSATKICHLAR</h2></div>
+        <div class="stats-grid">
+            {% for i in key_indicators %}
+            <div class="stats-card">
+                <div class="stats-value">{{ i.value }}</div>
+                <div class="stats-unit">{{ i.unit }}</div>
+                <div class="stats-title">{{ i.title }}</div>
+            </div>
+            {% empty %}
+            <p>Ko‘rsatkichlar mavjud emas.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- GOVERNMENT LINKS -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="section-title"><h2>FOYDALI DAVLAT SAYTLARI</h2></div>
+        <div class="gov-grid">
+            {% for g in government_links %}
+            <a href="{{ g.url }}" target="_blank" class="gov-card">
+                <div class="gov-logo">
+                    {% if g.logo %}
+                    <img src="{{ g.logo.url }}" alt="{{ g.name }}">
+                    {% endif %}
+                </div>
+                <p>{{ g.name }}</p>
+            </a>
+            {% empty %}
+            <p>Davlat saytlari mavjud emas.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    const swiper = new Swiper('.heroSwiper', {
+        loop: true,
+        autoplay: { delay: 5000 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+</script>
+{% endblock extra_js %}
+
+2215

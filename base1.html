@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head><!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+<!-- AOS (animatsiyalar uchun) -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}"O'ZENERGOTA'MINLASH" AJ{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    {% block extra_css %}{% endblock %}
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004080;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+        }
+        .hero-carousel {
+            height: 500px;
+            background: #f5f5f5;
+        }
+        .hero-carousel .swiper-slide {
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+        .quick-link-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .quick-link-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        .stats-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stats-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .news-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .news-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">"O'ZENERGOTA'MINLASH" AJ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>IES - Issiqlik Elektr Stantsiyalari</h5>
+                    <p>O'zbekistonning eng yirik elektr energiyasi ishlab chiqaruvchi kompaniyasi</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Kontaktlar</h5>
+                    <p>Toshkent, O'zbekiston</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Havolalar</h5>
+                    <a href="/admin/" class="text-white d-block">Admin Panel</a>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2024 IES. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    {% block extra_js %}{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+</body>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>IES - Issiqlik Elektr Stantsiyalari</h5>
+                <p>O'zbekistonning eng yirik elektr energiyasi ishlab chiqaruvchi kompaniyasi</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Kontaktlar</h5>
+                <p>Toshkent, O'zbekiston</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Havolalar</h5>
+                <a href="/admin/" class="text-white d-block">Admin Panel</a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p>&copy; 2024 IES. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- New footer block for additional navigation -->
+<footer class="footer-links">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>KOMPANIYA HAQIDA</h5>
+                <a href="/page/issiqlik-elektr-stanciyalari-akciyadorlik-zamiyati">"IES" AJ</a>
+                <a href="/page/rivozlanis-strategiyasi">RIVOJLANISH STRATEGIYASI</a>
+                <a href="/admission">RAHBARIYAT</a>
+                <!-- Add more links here -->
+            </div>
+            <div class="col-md-4">
+                <h5>FAOLIYAT</h5>
+                <a href="/page/ishlab-chiarish-krsatkichlari">ISHLAB CHIQARISH KO`RSATKICHLARI</a>
+                <!-- Add more links here -->
+            </div>
+            <div class="col-md-4">
+                <h5>ALOQA MA’LUMOTLARI</h5>
+                <p>Manzil: 100097, Toshkent, Bunyodkor shoh ko'chasi, 23-uy</p>
+                <p>Elektron pochta: <a href="mailto:info@tpp.uz">info@tpp.uz</a></p>
+                <p>Telefon: 71 276 48 46</p>
+                <!-- Add more contact info -->
+            </div>
+        </div>
+    </div>
+</footer>
+`
+</html>
+<!--20:50 14:11:2025-->
+
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}IES AJ{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container header-top">
+        <a class="header__brand" href="{% url 'homepage' %}">
+            <img src="{% static 'img/TPP_logo.svg' %}" alt="IES AJ Logo">
+            <span>“ISSIQLIK ELEKTR STANSIYALARI” AKSIYADORLIK JAMIYATI</span>
+        </a>
+
+        <div class="header__burger">
+            <svg width="24" height="14" viewBox="0 0 24 14" fill="none">
+                <rect width="24" height="2" rx="1" fill="#FF675D"></rect>
+                <rect y="6" width="24" height="2" rx="1" fill="#FF675D"></rect>
+                <rect y="12" width="24" height="2" rx="1" fill="#FF675D"></rect>
+            </svg>
+        </div>
+
+        <div class="header__right">
+            <div class="header__lang">
+                <span>{{ request.LANGUAGE_CODE|default:"uz" }}</span>
+                <div class="lang-dropdown">
+                    <ul>
+                        <li><a href="{% url 'set_language' %}?language=uz">Oʻzbekcha</a></li>
+                        <li><a href="{% url 'set_language' %}?language=ru">Русский</a></li>
+                        <li><a href="{% url 'set_language' %}?language=en">English</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="tel:+998712301273" class="header__number">
+                <img src="{% static 'img/telephone-call.svg' %}" alt="Phone">
+                <div>
+                    <span>Ishonch telefoni</span>
+                    <span>+99871 230 12 73 &nbsp; +99855 510 15 09</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <nav class="header-nav container">
+        <ul class="header-nav__list">
+            <li><a href="{% url 'homepage' %}" class="header-nav__link">Bosh sahifa</a></li>
+            <li><a href="{% url 'about' %}" class="header-nav__link">“IES” AJ</a></li>
+            <li><a href="{% url 'news' %}" class="header-nav__link">Yangiliklar</a></li>
+            <li><a href="{% url 'contacts' %}" class="header-nav__link">Kontaktlar</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer>
+    {% block footer %}{% endblock %}
+</footer>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>
+2120
+<!--<!DOCTYPE html>-->
+<!--{% load static%}-->
+<!--<html lang="uz">-->
+<!--<header>-->
+<!--    <div class="container">-->
+<!--        <div class="header">-->
+<!--            <div class="header-top"><a class="header__brand" href="/"><img src="/static/media/TPP logo 2.ccbd96b2.svg"-->
+<!--                                                                           alt=""><span>“ISSIQLIK ELЕKTR STANSIYALARI” AKSIYADORLIK JAMIYATI</span></a>-->
+<!--                <div class="header__burger">-->
+<!--                    <svg width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                        <rect width="24" height="2" rx="1" fill="#FF675D"></rect>-->
+<!--                        <rect y="6" width="24" height="2" rx="1" fill="#FF675D"></rect>-->
+<!--                        <rect y="12" width="24" height="2" rx="1" fill="#FF675D"></rect>-->
+<!--                    </svg>-->
+<!--                </div>-->
+<!--                <div class="header__right">-->
+<!--                    <div>-->
+<!--                        <div class="site-map">-->
+<!--                            <div class="site-map-icon">-->
+<!--                                <svg fill="#000000" height="30px" width="30px" version="1.1" id="Capa_1"-->
+<!--                                     xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink"-->
+<!--                                     viewBox="0 0 490 490" space="preserve">-->
+<!--                                    <g>-->
+<!--                                        <path d="M480,277.715h-38.756v-38.859c0-5.521-4.478-10-10-10H255v-23.91h74.56c5.523,0,10-4.477,10-10v-90.166   c0-5.521-4.477-10-10-10H160.438c-5.522,0-10,4.479-10,10v90.166c0,5.523,4.478,10,10,10H235v23.91H58.756c-5.522,0-10,4.479-10,10   v38.859H10c-5.523,0-10,4.477-10,10v97.506c0,5.521,4.477,10,10,10h97.51c5.523,0,10-4.479,10-10v-97.506c0-5.523-4.477-10-10-10   H68.756v-28.859H235v28.859h-38.758c-5.523,0-10,4.477-10,10v97.506c0,5.521,4.477,10,10,10h97.514c5.522,0,10-4.479,10-10v-97.506   c0-5.523-4.478-10-10-10H255v-28.859h166.244v28.859h-38.758c-5.522,0-10,4.477-10,10v97.506c0,5.521,4.478,10,10,10H480   c5.522,0,10-4.479,10-10v-97.506C490,282.191,485.522,277.715,480,277.715z M170.438,114.779H319.56v70.166H170.438V114.779z    M97.51,375.221H20v-77.506h77.51V375.221z M283.756,375.221h-77.514v-77.506h77.514V375.221z M470,375.221h-77.514v-77.506H470   V375.221z"></path>-->
+<!--                                    </g>-->
+<!--                                </svg>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="header__for-blind"><span class="element" aria-label="Ko'zi ojizlar uchun"></span>-->
+<!--                            <div class="dropdown ">-->
+<!--                                <div class="appearance">-->
+<!--                                    <div class="title">Ko'rinish</div>-->
+<!--                                    <ul>-->
+<!--                                        <li class="default">A</li>-->
+<!--                                        <li class="greyscale">A</li>-->
+<!--                                        <li class="greyscale-invert">A</li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="appearance">-->
+<!--                                    <div class="title">Shrift o'lchami</div>-->
+<!--                                    <div class="rc-slider">-->
+<!--                                        <div class="rc-slider-rail"></div>-->
+<!--                                        <div class="rc-slider-track" style="left: 0%; right: auto; width: 50%;"></div>-->
+<!--                                        <div class="rc-slider-step"><span class="rc-slider-dot rc-slider-dot-active"-->
+<!--                                                                          style="left: 0%;"></span><span-->
+<!--                                                class="rc-slider-dot rc-slider-dot-active"-->
+<!--                                                style="left: 25%;"></span><span-->
+<!--                                                class="rc-slider-dot rc-slider-dot-active"-->
+<!--                                                style="left: 50%;"></span><span class="rc-slider-dot"-->
+<!--                                                                                style="left: 75%;"></span><span-->
+<!--                                                class="rc-slider-dot" style="left: 100%;"></span></div>-->
+<!--                                        <div tabindex="0" class="rc-slider-handle"-->
+<!--                                             style="left: 50%; right: auto; transform: translateX(-50%);" role="slider"-->
+<!--                                             aria-valuemin="20" aria-valuemax="100" aria-valuenow="60"-->
+<!--                                             aria-disabled="false"></div>-->
+<!--                                        <div class="rc-slider-mark"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="appearance">-->
+<!--                                    <div class="title">Ko'rinish</div>-->
+<!--                                    <div class="rc-slider">-->
+<!--                                        <div class="rc-slider-rail"></div>-->
+<!--                                        <div class="rc-slider-track" style="left: 0%; right: auto; width: 0%;"></div>-->
+<!--                                        <div class="rc-slider-step"><span class="rc-slider-dot rc-slider-dot-active"-->
+<!--                                                                          style="left: 0%;"></span><span-->
+<!--                                                class="rc-slider-dot" style="left: 20%;"></span><span-->
+<!--                                                class="rc-slider-dot" style="left: 40%;"></span><span-->
+<!--                                                class="rc-slider-dot" style="left: 60%;"></span><span-->
+<!--                                                class="rc-slider-dot" style="left: 80%;"></span><span-->
+<!--                                                class="rc-slider-dot" style="left: 100%;"></span></div>-->
+<!--                                        <div tabindex="0" class="rc-slider-handle"-->
+<!--                                             style="left: 0%; right: auto; transform: translateX(-50%);" role="slider"-->
+<!--                                             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"-->
+<!--                                             aria-disabled="false"></div>-->
+<!--                                        <div class="rc-slider-mark"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="appearance switch flex-column">-->
+<!--                                    <div class="title">Ekran suxandoni</div>-->
+<!--                                    <div class="d-flex">-->
+<!--                                        <div><input type="checkbox" id="switch"><label for="switch">Toggle</label></div>-->
+<!--                                        <div class="switch-alert ">Yoqish</div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="header__lang" href="#">Oʻzbekcha-->
+<!--                            <div>-->
+<!--                                <ul class="lang-dropdown">-->
+<!--                                    <li class="lang-dropdown__item"><span class="lang-dropdown__btn">Ўзбекча</span></li>-->
+<!--                                    <li class="lang-dropdown__item"><span class="lang-dropdown__btn">Русский</span></li>-->
+<!--                                    <li class="lang-dropdown__item"><span class="lang-dropdown__btn">English</span></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div><a href="tel:+99871 230 12 73 +99855 510 15 09" class="header__number"><img-->
+<!--                            src="/static/media/telephone-call.b204f560.svg" alt="">-->
+<!--                        <div><span>Ishonch telefonI</span><span>+99871 230 12 73 +99855 510 15 09</span></div>-->
+<!--                    </a>-->
+<!--                        <div class="header__socials"><a href="https://t.me/ies_uz" target="_blank"-->
+<!--                                                        rel="noopener noreferrer"><img-->
+<!--                                src="https://cdn.tpp.uz/2021/07/15/09/40/40vWwpl1PtTDkqbevdMwoNH6cdCw1T1o_small.svg"-->
+<!--                                alt=""></a><a href="https://www.facebook.com/ies.uzbekistan" target="_blank"-->
+<!--                                              rel="noopener noreferrer"><img-->
+<!--                                src="https://cdn.tpp.uz/2021/07/15/09/40/lNjq3viaUIcd4RVkmHXXZ9Ha1egKj7BM_small.svg"-->
+<!--                                alt=""></a><a href="https://twitter.com/ies_uz?s=09" target="_blank"-->
+<!--                                              rel="noopener noreferrer"><img-->
+<!--                                src="https://cdn.tpp.uz/2021/07/15/09/40/JA6cpE2HYx9RzASRQ55jsh2GCInVwMHn_small.svg"-->
+<!--                                alt=""></a><a href="https://www.instagram.com/ies.uz/" target="_blank"-->
+<!--                                              rel="noopener noreferrer"><img-->
+<!--                                src="https://cdn.tpp.uz/2021/07/15/09/40/zN1IOpOxbJZQgufBZByGXtW88MNOpKQQ_small.svg"-->
+<!--                                alt=""></a><a-->
+<!--                                href="https://www.youtube.com/channel/UCeaR2jJNnRM7fGR2hUWPGFA?view_as=subscriber"-->
+<!--                                target="_blank" rel="noopener noreferrer"><img-->
+<!--                                src="https://cdn.tpp.uz/2021/07/16/09/42/1gP1Zwt5VIUtb5jYN17Dt8iHlbxW4j3a_small.svg"-->
+<!--                                alt=""></a><a href="#" class="mobile-btn">-->
+<!--                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"-->
+<!--                                 xmlns="http://www.w3.org/2000/svg">-->
+<!--                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                                      d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>-->
+<!--                            </svg>-->
+<!--                        </a></div>-->
+<!--                        <div class="header__search">-->
+<!--                            <div class="header__search-icon"><img src="/static/media/icon-magnifier.51dc9b54.svg"-->
+<!--                                                                  alt="Search"></div>-->
+<!--                            <form class="header__search-form "><input type="search" placeholder="Поиск"-->
+<!--                                                                      aria-label="search" required="" value="">-->
+<!--                                <button class="button" type="submit" aria-label="search-button">-->
+<!--                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">-->
+<!--                                        <path d="M18.2935 19.7078C18.6844 20.0979 19.3176 20.0973 19.7078 19.7065C20.0979 19.3156 20.0973 18.6824 19.7065 18.2922L18.2935 19.7078ZM14.5871 14.5953L13.8805 13.8876L14.5871 14.5953ZM8.96154 15.9231C5.11679 15.9231 2 12.8063 2 8.96154H0C0 13.9109 4.01222 17.9231 8.96154 17.9231V15.9231ZM2 8.96154C2 5.11679 5.11679 2 8.96154 2V0C4.01222 0 0 4.01222 0 8.96154H2ZM8.96154 2C12.8063 2 15.9231 5.11679 15.9231 8.96154H17.9231C17.9231 4.01222 13.9109 0 8.96154 0V2ZM15.9231 8.96154C15.9231 10.886 15.1435 12.6265 13.8805 13.8876L15.2937 15.3029C16.917 13.6819 17.9231 11.4383 17.9231 8.96154H15.9231ZM13.8805 13.8876C12.6199 15.1464 10.8824 15.9231 8.96154 15.9231V17.9231C11.4336 17.9231 13.6735 16.9208 15.2937 15.3029L13.8805 13.8876ZM13.8807 15.303L18.2935 19.7078L19.7065 18.2922L15.2936 13.8875L13.8807 15.303Z"-->
+<!--                                              fill="#FFF"></path>-->
+<!--                                    </svg>-->
+<!--                                </button>-->
+<!--                                <button type="button" class="btn more-btn" aria-label="search-button">Kengaytirilgan-->
+<!--                                    qidiruv-->
+<!--                                </button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <ul class="header-nav">-->
+<!--                <li class="header-nav__item">-->
+<!--                    <div class="dropdown-wrapper">-->
+<!--                        <ul class="dropdown">-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/issiqlik-elektr-stanciyalari-akciyadorlik-zamiyati">"IES"-->
+<!--                                AJ</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/rivozlanis-strategiyasi">RIVOJLANISH-->
+<!--                                STRATEGIYASI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/admission">RAHBARIYAT</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/markaziy-apparat">“IES” AJ-->
+<!--                                MARKAZIY APPARATI</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link" href="/page/kuq-raisi">“IES” AJ-->
+<!--                                        BOSHLANG`ICH KASABA UYUSHMASI QO`MITASI RAISI</a><a class="dropdown__link"-->
+<!--                                                                                            href="/page/kasaba-faoliyati">“IES”-->
+<!--                                        AJ BOSHLANG‘ICH KASABA UYUSHMASI QO‘MITASI FAOLIYATI</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">“IES” AJ BOSHLANG`ICH KASABA UYUSHMASI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/transformaciya">TRANSFORMATSIYA</a>-->
+<!--                            </li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/nasa-missiya">MISSIYA</a>-->
+<!--                            </li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/nasi-cennosti">QADRIYATLAR</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link"-->
+<!--                                                                 href="/page/zbekiston-respublikasi-qonunlari">O'ZBEKISTON-->
+<!--                                        RESPUBLIKASI QONUNLARI</a><a class="dropdown__link"-->
+<!--                                                                     href="/page/zbekiston-respublikasi-prezidentining-farmonlari-qarorlari-va-farmoiislari">O'ZBEKISTON-->
+<!--                                        RESPUBLIKASI PREZIDENTINING FARMONLARI, QARORLARI VA FARMOYISHLARI</a><a-->
+<!--                                            class="dropdown__link"-->
+<!--                                            href="/page/zbekiston-respublikasi-vazirlar-makamasining-qarorlari-va-farmoiislari">O'ZBEKISTON-->
+<!--                                        RESPUBLIKASI VAZIRLAR MAHKAMASINING QARORLARI VA FARMOYISHLARI</a><a-->
+<!--                                            class="dropdown__link" href="/page/invalid-regal-acts">KUCHINI YO'QOTGAN-->
+<!--                                        NORMATIV HUJJATLAR</a><a class="dropdown__link" href="/page/hujjat-loyiha">E'LON-->
+<!--                                        QILINGAN NORMATIV-HUQUQIY HUJJATLAR LOYIHALARI</a><a class="dropdown__link"-->
+<!--                                                                                             href="/page/ochiqlik-sohasida-hujjatlar">OCHIQLIK-->
+<!--                                        SOHASIDA ME’YORIY-HUQUQIY HUJJATLAR</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">NORMATIV HUQUQIY HUJJATLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/ijroiya-apparatining-tuzilmasi">IJROIYA-->
+<!--                                APPARATINING TUZILMASI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/kompaniyalar-gurui-tuzilmasi">KOMPANIYALAR GURUHI-->
+<!--                                TUZILMASI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/kompaniyalar-gurui">KOMPANIYALAR-->
+<!--                                GURUHI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/biz-bilan-bolanish">BIZ-->
+<!--                                BILAN ALOQA</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/virtual">VIRTUAL QABULXONA</a>-->
+<!--                            </li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/vakansiya">BO'SH ISH-->
+<!--                                O'RINLARI</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <a class="header-nav__link drop" href="/">Jamiyat haqida</a></li>-->
+<!--                <li class="header-nav__item">-->
+<!--                    <div class="dropdown-wrapper">-->
+<!--                        <ul class="dropdown">-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/rahbarlar-faoliyati">RAHBARLAR-->
+<!--                                FAOLIYATI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/ishlab-chiarish-krsatkichlari">ISHLAB CHIQARISH-->
+<!--                                KO'RSATKICHLARI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/maalliilastiris-va-kooperaciya-dasuturi">MAHALLIYLASHTIRISH-->
+<!--                                VA KOOPERATSIYA DASTURI</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link"-->
+<!--                                                                 href="/page/protivodeystvie-korruptsii">KORRUPSIYAGA-->
+<!--                                        QARSHI KURASHISH</a><a class="dropdown__link"-->
+<!--                                                               href="/page/malumotlar-va-hisobotlar">MA'LUMOTLAR VA-->
+<!--                                        HISOBOTLAR</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">KOMPLAENS</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link"-->
+<!--                                                                 href="/page/issiqlik-elektr-stanciyalari-akciyadorlik-zamiyatiyoslar-ittifoqi-etakcisi">YOSHLAR-->
+<!--                                        ITTIFOQI YETAKCHISI</a><a class="dropdown__link"-->
+<!--                                                                  href="/page/yoslar-ittifoqi-faoliyati">YOSHLAR-->
+<!--                                        ITTIFOQI FAOLIYATI</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">YOSHLAR SIYOSATI</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link" href="/page/xotin-qizlar">XOTIN-QIZLAR-->
+<!--                                        JAMOATCHILIK KENGASHI RAISI</a><a class="dropdown__link"-->
+<!--                                                                          href="/page/gender-tenglik">XOTIN-QIZLAR-->
+<!--                                        JAMOATCHILIK KENGASHI FAOLIYATI</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">GENDER TENGLIK</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link"-->
+<!--                                                                 href="/page/atrof-muitni-muofaza-qilis">FAOLIYAT</a><a-->
+<!--                                            class="dropdown__link" href="/page/muhit-hujjat">HUJJATLAR</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">ATROF-MUHITNI MUHOFAZA QILISH</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/metrologiya">METROLOGIYA VA-->
+<!--                                STANDARTLASHTIRISH</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/tanlovlar-va-tenderlar">TANLOVLAR-->
+<!--                                VA TENDERLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/raqamli-hukumat">RAQAMLI-->
+<!--                                HUKUMAT</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link"-->
+<!--                                                                 href="/page/zismonii-saxslarni-va-yuridik-saxslarning-vakillarini-qabul-qilis-tartibi">FUQAROLARNI-->
+<!--                                        QABUL QILISH TARTIBI</a><a class="dropdown__link" href="/contact">VIRTUAL-->
+<!--                                        QABULXONA</a><a class="dropdown__link"-->
+<!--                                                        href="/page/murozaatlarni-krib-ciqis-tartibi">MUROJAATLARNI-->
+<!--                                        KO‘RIB CHIQISH TARTIBI</a><a class="dropdown__link"-->
+<!--                                                                     href="/page/ishonch-telefoni-orqali-baholash-statistikasi">ISHONCH-->
+<!--                                        TELEFONI ORQALI BAHOLASH STATISTIKASI</a><a class="dropdown__link"-->
+<!--                                                                                    href="/page/murozaatlar-statistikasi">MUROJAATLAR-->
+<!--                                        STATISTIKASI</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">MUROJAATLAR BILAN ISHLASH</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/dastur-ijrosi">DASTURLAR-->
+<!--                                IJROSI HOLATI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/ish-rejalar">ISH-->
+<!--                                REJALAR</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <a class="header-nav__link drop" href="/">Faoliyat</a></li>-->
+<!--                <li class="header-nav__item">-->
+<!--                    <div class="dropdown-wrapper">-->
+<!--                        <ul class="dropdown">-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/halaro-aloalar">XALQARO-->
+<!--                                ALOQALAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/loyialar-va-modernizaciyalar-ishlari">LOYIHALAR VA-->
+<!--                                MODERNIZATSIYA ISHLARI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/issiqlik-elektr-stanciyalari-az-tomonidan-davlat-tasqi-qarzi-isobidan-amalga-osirilgan-investiciya-loiialari-tgrisida-malumot">DAVLAT-->
+<!--                                TASHQI QARZI HISOBIDAN AMALGA OSHIRILGAN LOYIHALAR</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <a class="header-nav__link drop" href="/">Investitsiya siyosati</a></li>-->
+<!--                <li class="header-nav__item">-->
+<!--                    <div class="dropdown-wrapper">-->
+<!--                        <ul class="dropdown">-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/veb-saytni-yuritish">VEB-SAYTNI-->
+<!--                                YURITISH</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/news">YANGILIKLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/category/obyavlenie">E`LONLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/matbuot-kotibi">MATBUOT-->
+<!--                                KOTIBI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/issilik-elektr-stanciyalari-aj-matbuot-hizmati-vazifalari">MATBUOT-->
+<!--                                XIZMATI VAZIFALARI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/tash-et-med-tad">TASHKIL-->
+<!--                                ETILADIGAN BO‘LAJAK OMMAVIY VA MEDIA-TADBIRLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/ahborot-srash-tartibi">AXBOROT-->
+<!--                                SO’RASH TARTIBI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/boglanis">BOG’LANISH</a>-->
+<!--                            </li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/category/fotogalereya">FOTO-->
+<!--                                GALEREYA</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/category/videogalereya">VIDEO-->
+<!--                                GALEREYA</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/savol-javob">SAVOL-JAVOBLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/instruction-on-terms">ATAMALAR-->
+<!--                                BO`YICHA YO`RIQNOMA</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <a class="header-nav__link drop" href="/">Matbuot xizmati</a></li>-->
+<!--                <li class="header-nav__item">-->
+<!--                    <div class="dropdown-wrapper">-->
+<!--                        <ul class="dropdown">-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/aksiyador">AKSIYADOR</a>-->
+<!--                            </li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link" href="/page/2024-year">2024 YIL-->
+<!--                                        DAVOMIDA</a><a class="dropdown__link" href="/page/2023-year">2023 YIL-->
+<!--                                        DAVOMIDA</a><a class="dropdown__link" href="/page/2022-year">2022 YIL-->
+<!--                                        DAVOMIDA</a><a class="dropdown__link"-->
+<!--                                                       href="/page/2021-iil-davomida-zamiyatning-yagona-akciyadori-tomonidan-qabul-qilingan-qarorlar">2021-->
+<!--                                        YIL DAVOMIDA</a><a class="dropdown__link"-->
+<!--                                                           href="/page/2020-iil-davomida-zamiyatning-yagona-akciyadori-tomonidan-qabul-qilingan-qarorlar">2020-->
+<!--                                        YIL DAVOMIDA</a><a class="dropdown__link" href="/page/2019-iil-davomida">2019-->
+<!--                                        YIL DAVOMIDA</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">AKSIYADORNING QARORLARI</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link" href="/page/ustav">USTAV</a><a-->
+<!--                                            class="dropdown__link" href="/page/nizom">NIZOMLAR</a><a-->
+<!--                                            class="dropdown__link" href="/page/guvonoma">GUVOHNOMA</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">KORPORATIV HUJJATLAR</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link"-->
+<!--                                                                 href="/page/kuzatuv-kengasi-tarkibi">KUZATUV-->
+<!--                                        KENGASHI</a><a class="dropdown__link" href="/admission">IJRO ORGANI</a><a-->
+<!--                                            class="dropdown__link" href="/page/icki-audit-xizmati-tarkibi">ICHKI AUDIT-->
+<!--                                        TARKIBI</a><a class="dropdown__link" href="/page/maslahat-organi">MUVOFIQLASHTIRUVCHI-->
+<!--                                        MASLAHAT ORGANI</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">BOSHQARUV ORGANLARI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/ozbekiston-respublikasi-ochiq-malumotlar-portali">JAMIYAT-->
+<!--                                OCHIQ MA'LUMOTLARI</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link" href="/page/2024-yil">2024</a><a-->
+<!--                                            class="dropdown__link" href="/page/2023-yil">2023</a><a-->
+<!--                                            class="dropdown__link" href="/page/2022-yil">2022</a><a-->
+<!--                                            class="dropdown__link" href="/page/2021-yil">2021</a><a-->
+<!--                                            class="dropdown__link" href="/page/korporativ-baolas-2020">2020</a><a-->
+<!--                                            class="dropdown__link" href="/page/korporativ-baolas">2019</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">KORPORATIV BAHOLASH</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/korporativ-bosqaruv">KORPORATIV-->
+<!--                                KODEKS</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/issiqlik-elektr-stanciyalari-az-va-uning-tarkibidagi-zamiyatlarning-bs-turgan-va-nosoxavii-aktivlari-ruixati">BO’SH-->
+<!--                                TURGAN VA NOSOHAVIY AKTIVLAR RO’YXATI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/ESG">ESG</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <a class="header-nav__link drop" href="/">Korporativ boshqaruv</a></li>-->
+<!--                <li class="header-nav__item">-->
+<!--                    <div class="dropdown-wrapper">-->
+<!--                        <ul class="dropdown">-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/biznes-reja">BIZNES-->
+<!--                                REJASI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/biznes-reza-izrosi">BIZNЕS-->
+<!--                                RЕJA IJROSI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/rivozlanis-strategiyasi-izrosi">RIVOJLANISH-->
+<!--                                STRATEGIYASI IJROSI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/audit-hulosalari">AUDITORLIK-->
+<!--                                XULOSALARI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/biznes-reza">MOLIYAVIY-->
+<!--                                HISOBOTLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/affilsaxslar-rixati">AFFILLANGAN-->
+<!--                                SHAXSLAR</a></li>-->
+<!--                            <li class="dropdown__item">-->
+<!--                                <div class="dropdown-wrapper__second">-->
+<!--                                    <div class="sub-dropdown"><a class="dropdown__link" href="/page/muim-faktlar">MUHIM-->
+<!--                                        FAKTLAR-1</a><a class="dropdown__link" href="/page/essential-facts-2">MUHIM-->
+<!--                                        FAKTLAR-2</a></div>-->
+<!--                                </div>-->
+<!--                                <a class="dropdown__link drop" href="/">MUHIM FAKTLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/emissiya-risolasi">EMISSIYA-->
+<!--                                RISOLASI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/2019-iil-biica-tlov-dividendi">DIVIDEND</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/konkursnyx-i-otbornyx-torgov-prosedsie-v-2021-godu-po-ao-teplovye-elektriceskie-stancii">SAVDOLAR-->
+<!--                                VA TANLOVLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/202-iilda-issiqlik-elektr-stanciyalari-az-faoliyati-samaradorligi-krsatkiclari-kpi">KPI-->
+<!--                                KO‘RSATKICHLARI</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link" href="/page/boshqa-malumotlar">HISOBOTLAR</a>-->
+<!--                            </li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/issiqlik-elektr-stanciyalari-az-akciyadorini-iigilis-tkazis-tgrisidagi-axborotlar">АKSIYADORNING-->
+<!--                                YIG‘ILISH O‘TKAZISHI TO‘G‘RISIDAGI AXBOROTLAR</a></li>-->
+<!--                            <li class="dropdown__item"><a class="dropdown__link"-->
+<!--                                                          href="/page/issiqlik-elektr-stanciyalari-az-tomonidan-akciyalar-sotib-olinisi-tgrisidagi-axborotlar">АKSIYALAR-->
+<!--                                SOTIB OLINISHI TO‘G‘RISIDAGI AXBOROTLAR</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <a class="header-nav__link drop" href="/">Aksiyadorlar va sarmoyadorlar uchun</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>{% block title %}{% endblock %}</title>-->
+
+<!--    &lt;!&ndash; CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/style.css' %}">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash;&lt;!&ndash; Navbar &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<nav class="navbar navbar-expand-lg navbar-dark bg-primary">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="header">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="header-top"><a class="header__brand" href="/"><img src="/static/media/TPP logo 2.ccbd96b2.svg"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                       alt=""><span>“ISSIQLIK ELЕKTR STANSIYALARI” AKSIYADORLIK JAMIYATI</span></a>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <a class="navbar-brand" href="/">O'ZENERGOTA'MINLASH AJ</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="header__burger">&ndash;&gt;-->
+<!--&lt;!&ndash;    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">&ndash;&gt;-->
+<!--&lt;!&ndash;      <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </button>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="collapse navbar-collapse" id="navbarNav">&ndash;&gt;-->
+<!--&lt;!&ndash;      <ul class="navbar-nav ms-auto">&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item"><a class="nav-link" href="/">Bosh sahifa</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item"><a class="nav-link" href="/history/">Tarix</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item"><a class="nav-link" href="/news/">Yangiliklar</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item"><a class="nav-link" href="/contact/">Kontakt</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;      </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="header">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="header-top"><a class="header__brand" href="/"><img src="/static/media/TPP logo 2.ccbd96b2.svg"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                       alt=""><span>“ISSIQLIK ELЕKTR STANSIYALARI” AKSIYADORLIK JAMIYATI</span></a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="header__burger">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <svg width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <rect width="24" height="2" rx="1" fill="#FF675D"></rect>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <rect y="6" width="24" height="2" rx="1" fill="#FF675D"></rect>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <rect y="12" width="24" height="2" rx="1" fill="#FF675D"></rect>&ndash;&gt;-->
+<!--&lt;!&ndash;                </svg>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="header__right">&ndash;&gt;-->
+<!--&lt;!&ndash;                                 <div class="header__for-blind"><span class="element" aria-label="Ko'zi ojizlar uchun"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="dropdown ">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="appearance">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="title">Ko'rinish</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <li class="default">A</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <li class="greyscale">A</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <li class="greyscale-invert">A</li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="appearance">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="title">Shrift o'lchami</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="rc-slider">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-rail"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-track" style="left: 0%; right: auto; width: 50%;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-step"><span class="rc-slider-dot rc-slider-dot-active"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                      style="left: 0%;"></span><span&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="rc-slider-dot rc-slider-dot-active" style="left: 25%;"></span><span&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="rc-slider-dot rc-slider-dot-active" style="left: 50%;"></span><span&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="rc-slider-dot" style="left: 75%;"></span><span class="rc-slider-dot"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                  style="left: 100%;"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div tabindex="0" class="rc-slider-handle"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         style="left: 50%; right: auto; transform: translateX(-50%);" role="slider"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         aria-valuemin="20" aria-valuemax="100" aria-valuenow="60"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         aria-disabled="false"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-mark"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="appearance">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="title">Ko'rinish</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="rc-slider">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-rail"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-track" style="left: 0%; right: auto; width: 0%;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-step"><span class="rc-slider-dot rc-slider-dot-active"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                      style="left: 0%;"></span><span&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="rc-slider-dot" style="left: 20%;"></span><span class="rc-slider-dot"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                  style="left: 40%;"></span><span&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="rc-slider-dot" style="left: 60%;"></span><span class="rc-slider-dot"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                  style="left: 80%;"></span><span&ndash;&gt;-->
+<!--&lt;!&ndash;                                            class="rc-slider-dot" style="left: 100%;"></span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div tabindex="0" class="rc-slider-handle"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         style="left: 0%; right: auto; transform: translateX(-50%);" role="slider"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         aria-disabled="false"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="rc-slider-mark"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="appearance switch flex-column">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="title">Ekran suxandoni</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="d-flex">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div><input type="checkbox" id="switch"><label for="switch">Toggle</label></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="switch-alert ">Yoqish</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="header__lang" href="#">Oʻzbekcha&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <ul class="lang-dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="lang-dropdown__item"><span class="lang-dropdown__btn">Ўзбекча</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="lang-dropdown__item"><span class="lang-dropdown__btn">Русский</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="lang-dropdown__item"><span class="lang-dropdown__btn">English</span></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div><a href="tel:+99871 230 12 73 +99855 510 15 09" class="header__number"><img&ndash;&gt;-->
+<!--&lt;!&ndash;                        src="/static/media/telephone-call.b204f560.svg" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div><span>Ishonch telefonI</span><span>+99871 230 12 73 +99855 510 15 09</span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="header__socials"><a href="https://t.me/ies_uz" target="_blank"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    rel="noopener noreferrer"><img&ndash;&gt;-->
+<!--&lt;!&ndash;                            src="https://cdn.tpp.uz/2021/07/15/09/40/40vWwpl1PtTDkqbevdMwoNH6cdCw1T1o_small.svg" alt=""></a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                            href="https://www.facebook.com/ies.uzbekistan" target="_blank"&ndash;&gt;-->
+<!--&lt;!&ndash;                            rel="noopener noreferrer"><img&ndash;&gt;-->
+<!--&lt;!&ndash;                            src="https://cdn.tpp.uz/2021/07/15/09/40/lNjq3viaUIcd4RVkmHXXZ9Ha1egKj7BM_small.svg" alt=""></a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                            href="https://twitter.com/ies_uz?s=09" target="_blank" rel="noopener noreferrer"><img&ndash;&gt;-->
+<!--&lt;!&ndash;                            src="https://cdn.tpp.uz/2021/07/15/09/40/JA6cpE2HYx9RzASRQ55jsh2GCInVwMHn_small.svg" alt=""></a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                            href="https://www.instagram.com/ies.uz/" target="_blank" rel="noopener noreferrer"><img&ndash;&gt;-->
+<!--&lt;!&ndash;                            src="https://cdn.tpp.uz/2021/07/15/09/40/zN1IOpOxbJZQgufBZByGXtW88MNOpKQQ_small.svg" alt=""></a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                            href="https://www.youtube.com/channel/UCeaR2jJNnRM7fGR2hUWPGFA?view_as=subscriber"&ndash;&gt;-->
+<!--&lt;!&ndash;                            target="_blank" rel="noopener noreferrer"><img&ndash;&gt;-->
+<!--&lt;!&ndash;                            src="https://cdn.tpp.uz/2021/07/16/09/42/1gP1Zwt5VIUtb5jYN17Dt8iHlbxW4j3a_small.svg" alt=""></a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                            href="#" class="mobile-btn">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"&ndash;&gt;-->
+<!--&lt;!&ndash;                             xmlns="http://www.w3.org/2000/svg">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"&ndash;&gt;-->
+<!--&lt;!&ndash;                                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </svg>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="header__search">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="header__search-icon"><img src="/static/media/icon-magnifier.51dc9b54.svg"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                              alt="Search"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <form class="header__search-form "><input type="search" placeholder="Поиск" aria-label="search"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                  required="" value="">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <button class="button" type="submit" aria-label="search-button">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <path d="M18.2935 19.7078C18.6844 20.0979 19.3176 20.0973 19.7078 19.7065C20.0979 19.3156 20.0973 18.6824 19.7065 18.2922L18.2935 19.7078ZM14.5871 14.5953L13.8805 13.8876L14.5871 14.5953ZM8.96154 15.9231C5.11679 15.9231 2 12.8063 2 8.96154H0C0 13.9109 4.01222 17.9231 8.96154 17.9231V15.9231ZM2 8.96154C2 5.11679 5.11679 2 8.96154 2V0C4.01222 0 0 4.01222 0 8.96154H2ZM8.96154 2C12.8063 2 15.9231 5.11679 15.9231 8.96154H17.9231C17.9231 4.01222 13.9109 0 8.96154 0V2ZM15.9231 8.96154C15.9231 10.886 15.1435 12.6265 13.8805 13.8876L15.2937 15.3029C16.917 13.6819 17.9231 11.4383 17.9231 8.96154H15.9231ZM13.8805 13.8876C12.6199 15.1464 10.8824 15.9231 8.96154 15.9231V17.9231C11.4336 17.9231 13.6735 16.9208 15.2937 15.3029L13.8805 13.8876ZM13.8807 15.303L18.2935 19.7078L19.7065 18.2922L15.2936 13.8875L13.8807 15.303Z"&ndash;&gt;-->
+<!--&lt;!&ndash;                                          fill="#FFF"></path>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </svg>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <button type="button" class="btn more-btn" aria-label="search-button">Kengaytirilgan&ndash;&gt;-->
+<!--&lt;!&ndash;                                qidiruv&ndash;&gt;-->
+<!--&lt;!&ndash;                            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <ul class="header-nav">&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="header-nav__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/issiqlik-elektr-stanciyalari-akciyadorlik-zamiyati">"IES"&ndash;&gt;-->
+<!--&lt;!&ndash;                            AJ</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/rivozlanis-strategiyasi">RIVOJLANISH&ndash;&gt;-->
+<!--&lt;!&ndash;                            STRATEGIYASI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/admission">RAHBARIYAT</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/markaziy-apparat">“IES” AJ&ndash;&gt;-->
+<!--&lt;!&ndash;                            MARKAZIY APPARATI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link" href="/page/kuq-raisi">“IES” AJ&ndash;&gt;-->
+<!--&lt;!&ndash;                                    BOSHLANG`ICH KASABA UYUSHMASI QO`MITASI RAISI</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        href="/page/kasaba-faoliyati">“IES”&ndash;&gt;-->
+<!--&lt;!&ndash;                                    AJ BOSHLANG‘ICH KASABA UYUSHMASI QO‘MITASI FAOLIYATI</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">“IES” AJ BOSHLANG`ICH KASABA UYUSHMASI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/transformaciya">TRANSFORMATSIYA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/nasa-missiya">MISSIYA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/nasi-cennosti">QADRIYATLAR</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                             href="/page/zbekiston-respublikasi-qonunlari">O'ZBEKISTON&ndash;&gt;-->
+<!--&lt;!&ndash;                                    RESPUBLIKASI QONUNLARI</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                 href="/page/zbekiston-respublikasi-prezidentining-farmonlari-qarorlari-va-farmoiislari">O'ZBEKISTON&ndash;&gt;-->
+<!--&lt;!&ndash;                                    RESPUBLIKASI PREZIDENTINING FARMONLARI, QARORLARI VA FARMOYISHLARI</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                        href="/page/zbekiston-respublikasi-vazirlar-makamasining-qarorlari-va-farmoiislari">O'ZBEKISTON&ndash;&gt;-->
+<!--&lt;!&ndash;                                    RESPUBLIKASI VAZIRLAR MAHKAMASINING QARORLARI VA FARMOYISHLARI</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/invalid-regal-acts">KUCHINI YO'QOTGAN&ndash;&gt;-->
+<!--&lt;!&ndash;                                    NORMATIV HUJJATLAR</a><a class="dropdown__link" href="/page/hujjat-loyiha">E'LON&ndash;&gt;-->
+<!--&lt;!&ndash;                                    QILINGAN NORMATIV-HUQUQIY HUJJATLAR LOYIHALARI</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                         href="/page/ochiqlik-sohasida-hujjatlar">OCHIQLIK&ndash;&gt;-->
+<!--&lt;!&ndash;                                    SOHASIDA ME’YORIY-HUQUQIY HUJJATLAR</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">NORMATIV HUQUQIY HUJJATLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/ijroiya-apparatining-tuzilmasi">IJROIYA APPARATINING&ndash;&gt;-->
+<!--&lt;!&ndash;                            TUZILMASI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/kompaniyalar-gurui-tuzilmasi">KOMPANIYALAR&ndash;&gt;-->
+<!--&lt;!&ndash;                            GURUHI TUZILMASI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/kompaniyalar-gurui">KOMPANIYALAR&ndash;&gt;-->
+<!--&lt;!&ndash;                            GURUHI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/biz-bilan-bolanish">BIZ BILAN&ndash;&gt;-->
+<!--&lt;!&ndash;                            ALOQA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/virtual">VIRTUAL QABULXONA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/vakansiya">BO'SH ISH&ndash;&gt;-->
+<!--&lt;!&ndash;                            O'RINLARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="header-nav__link drop" href="/">Jamiyat haqida</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="header-nav__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/rahbarlar-faoliyati">RAHBARLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                            FAOLIYATI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/ishlab-chiarish-krsatkichlari">ISHLAB&ndash;&gt;-->
+<!--&lt;!&ndash;                            CHIQARISH KO'RSATKICHLARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/maalliilastiris-va-kooperaciya-dasuturi">MAHALLIYLASHTIRISH&ndash;&gt;-->
+<!--&lt;!&ndash;                            VA KOOPERATSIYA DASTURI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                             href="/page/protivodeystvie-korruptsii">KORRUPSIYAGA QARSHI&ndash;&gt;-->
+<!--&lt;!&ndash;                                    KURASHISH</a><a class="dropdown__link" href="/page/malumotlar-va-hisobotlar">MA'LUMOTLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                                    VA HISOBOTLAR</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">KOMPLAENS</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                             href="/page/issiqlik-elektr-stanciyalari-akciyadorlik-zamiyatiyoslar-ittifoqi-etakcisi">YOSHLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                                    ITTIFOQI YETAKCHISI</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                              href="/page/yoslar-ittifoqi-faoliyati">YOSHLAR ITTIFOQI&ndash;&gt;-->
+<!--&lt;!&ndash;                                    FAOLIYATI</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">YOSHLAR SIYOSATI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link" href="/page/xotin-qizlar">XOTIN-QIZLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                                    JAMOATCHILIK KENGASHI RAISI</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                      href="/page/gender-tenglik">XOTIN-QIZLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                                    JAMOATCHILIK KENGASHI FAOLIYATI</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">GENDER TENGLIK</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                             href="/page/atrof-muitni-muofaza-qilis">FAOLIYAT</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/muhit-hujjat">HUJJATLAR</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">ATROF-MUHITNI MUHOFAZA QILISH</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/metrologiya">METROLOGIYA VA&ndash;&gt;-->
+<!--&lt;!&ndash;                            STANDARTLASHTIRISH</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/tanlovlar-va-tenderlar">TANLOVLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                            VA TENDERLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/raqamli-hukumat">RAQAMLI&ndash;&gt;-->
+<!--&lt;!&ndash;                            HUKUMAT</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                             href="/page/zismonii-saxslarni-va-yuridik-saxslarning-vakillarini-qabul-qilis-tartibi">FUQAROLARNI&ndash;&gt;-->
+<!--&lt;!&ndash;                                    QABUL QILISH TARTIBI</a><a class="dropdown__link" href="/contact">VIRTUAL&ndash;&gt;-->
+<!--&lt;!&ndash;                                    QABULXONA</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    href="/page/murozaatlarni-krib-ciqis-tartibi">MUROJAATLARNI KO‘RIB&ndash;&gt;-->
+<!--&lt;!&ndash;                                    CHIQISH TARTIBI</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                          href="/page/ishonch-telefoni-orqali-baholash-statistikasi">ISHONCH&ndash;&gt;-->
+<!--&lt;!&ndash;                                    TELEFONI ORQALI BAHOLASH STATISTIKASI</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                href="/page/murozaatlar-statistikasi">MUROJAATLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                                    STATISTIKASI</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">MUROJAATLAR BILAN ISHLASH</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/dastur-ijrosi">DASTURLAR IJROSI&ndash;&gt;-->
+<!--&lt;!&ndash;                            HOLATI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/ish-rejalar">ISH REJALAR</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="header-nav__link drop" href="/">Faoliyat</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="header-nav__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/halaro-aloalar">XALQARO&ndash;&gt;-->
+<!--&lt;!&ndash;                            ALOQALAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/loyialar-va-modernizaciyalar-ishlari">LOYIHALAR VA&ndash;&gt;-->
+<!--&lt;!&ndash;                            MODERNIZATSIYA ISHLARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/issiqlik-elektr-stanciyalari-az-tomonidan-davlat-tasqi-qarzi-isobidan-amalga-osirilgan-investiciya-loiialari-tgrisida-malumot">DAVLAT&ndash;&gt;-->
+<!--&lt;!&ndash;                            TASHQI QARZI HISOBIDAN AMALGA OSHIRILGAN LOYIHALAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="header-nav__link drop" href="/">Investitsiya siyosati</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="header-nav__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/veb-saytni-yuritish">VEB-SAYTNI&ndash;&gt;-->
+<!--&lt;!&ndash;                            YURITISH</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/news">YANGILIKLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/category/obyavlenie">E`LONLAR</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/matbuot-kotibi">MATBUOT&ndash;&gt;-->
+<!--&lt;!&ndash;                            KOTIBI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/issilik-elektr-stanciyalari-aj-matbuot-hizmati-vazifalari">MATBUOT&ndash;&gt;-->
+<!--&lt;!&ndash;                            XIZMATI VAZIFALARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/tash-et-med-tad">TASHKIL&ndash;&gt;-->
+<!--&lt;!&ndash;                            ETILADIGAN BO‘LAJAK OMMAVIY VA MEDIA-TADBIRLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/ahborot-srash-tartibi">AXBOROT&ndash;&gt;-->
+<!--&lt;!&ndash;                            SO’RASH TARTIBI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/boglanis">BOG’LANISH</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/category/fotogalereya">FOTO&ndash;&gt;-->
+<!--&lt;!&ndash;                            GALEREYA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/category/videogalereya">VIDEO&ndash;&gt;-->
+<!--&lt;!&ndash;                            GALEREYA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/savol-javob">SAVOL-JAVOBLAR</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/instruction-on-terms">ATAMALAR&ndash;&gt;-->
+<!--&lt;!&ndash;                            BO`YICHA YO`RIQNOMA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="header-nav__link drop" href="/">Matbuot xizmati</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="header-nav__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/aksiyador">AKSIYADOR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link" href="/page/2024-year">2024 YIL&ndash;&gt;-->
+<!--&lt;!&ndash;                                    DAVOMIDA</a><a class="dropdown__link" href="/page/2023-year">2023 YIL DAVOMIDA</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/2022-year">2022 YIL DAVOMIDA</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                        href="/page/2021-iil-davomida-zamiyatning-yagona-akciyadori-tomonidan-qabul-qilingan-qarorlar">2021&ndash;&gt;-->
+<!--&lt;!&ndash;                                    YIL DAVOMIDA</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                       href="/page/2020-iil-davomida-zamiyatning-yagona-akciyadori-tomonidan-qabul-qilingan-qarorlar">2020&ndash;&gt;-->
+<!--&lt;!&ndash;                                    YIL DAVOMIDA</a><a class="dropdown__link" href="/page/2019-iil-davomida">2019 YIL&ndash;&gt;-->
+<!--&lt;!&ndash;                                    DAVOMIDA</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">AKSIYADORNING QARORLARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link" href="/page/ustav">USTAV</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/nizom">NIZOMLAR</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                 href="/page/guvonoma">GUVOHNOMA</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">KORPORATIV HUJJATLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                             href="/page/kuzatuv-kengasi-tarkibi">KUZATUV KENGASHI</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/admission">IJRO ORGANI</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/icki-audit-xizmati-tarkibi">ICHKI AUDIT&ndash;&gt;-->
+<!--&lt;!&ndash;                                    TARKIBI</a><a class="dropdown__link" href="/page/maslahat-organi">MUVOFIQLASHTIRUVCHI&ndash;&gt;-->
+<!--&lt;!&ndash;                                    MASLAHAT ORGANI</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">BOSHQARUV ORGANLARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/ozbekiston-respublikasi-ochiq-malumotlar-portali">JAMIYAT&ndash;&gt;-->
+<!--&lt;!&ndash;                            OCHIQ MA'LUMOTLARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link" href="/page/2024-yil">2024</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/2023-yil">2023</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                href="/page/2022-yil">2022</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/2021-yil">2021</a><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                                href="/page/korporativ-baolas-2020">2020</a><a&ndash;&gt;-->
+<!--&lt;!&ndash;                                        class="dropdown__link" href="/page/korporativ-baolas">2019</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">KORPORATIV BAHOLASH</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/korporativ-bosqaruv">KORPORATIV&ndash;&gt;-->
+<!--&lt;!&ndash;                            KODEKS</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/issiqlik-elektr-stanciyalari-az-va-uning-tarkibidagi-zamiyatlarning-bs-turgan-va-nosoxavii-aktivlari-ruixati">BO’SH&ndash;&gt;-->
+<!--&lt;!&ndash;                            TURGAN VA NOSOHAVIY AKTIVLAR RO’YXATI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/ESG">ESG</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="header-nav__link drop" href="/">Korporativ boshqaruv</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="header-nav__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/biznes-reja">BIZNES REJASI</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/biznes-reza-izrosi">BIZNЕS RЕJA&ndash;&gt;-->
+<!--&lt;!&ndash;                            IJROSI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/rivozlanis-strategiyasi-izrosi">RIVOJLANISH&ndash;&gt;-->
+<!--&lt;!&ndash;                            STRATEGIYASI IJROSI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/audit-hulosalari">AUDITORLIK&ndash;&gt;-->
+<!--&lt;!&ndash;                            XULOSALARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/biznes-reza">MOLIYAVIY&ndash;&gt;-->
+<!--&lt;!&ndash;                            HISOBOTLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/affilsaxslar-rixati">AFFILLANGAN&ndash;&gt;-->
+<!--&lt;!&ndash;                            SHAXSLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="dropdown-wrapper__second">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sub-dropdown"><a class="dropdown__link" href="/page/muim-faktlar">MUHIM&ndash;&gt;-->
+<!--&lt;!&ndash;                                    FAKTLAR-1</a><a class="dropdown__link" href="/page/essential-facts-2">MUHIM&ndash;&gt;-->
+<!--&lt;!&ndash;                                    FAKTLAR-2</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="dropdown__link drop" href="/">MUHIM FAKTLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/emissiya-risolasi">EMISSIYA&ndash;&gt;-->
+<!--&lt;!&ndash;                            RISOLASI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link" href="/page/2019-iil-biica-tlov-dividendi">DIVIDEND</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/konkursnyx-i-otbornyx-torgov-prosedsie-v-2021-godu-po-ao-teplovye-elektriceskie-stancii">SAVDOLAR&ndash;&gt;-->
+<!--&lt;!&ndash;                            VA TANLOVLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/202-iilda-issiqlik-elektr-stanciyalari-az-faoliyati-samaradorligi-krsatkiclari-kpi">KPI&ndash;&gt;-->
+<!--&lt;!&ndash;                            KO‘RSATKICHLARI</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/boshqa-malumotlar">HISOBOTLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/issiqlik-elektr-stanciyalari-az-akciyadorini-iigilis-tkazis-tgrisidagi-axborotlar">АKSIYADORNING&ndash;&gt;-->
+<!--&lt;!&ndash;                            YIG‘ILISH O‘TKAZISHI TO‘G‘RISIDAGI AXBOROTLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li class="dropdown__item"><a class="dropdown__link"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                      href="/page/issiqlik-elektr-stanciyalari-az-tomonidan-akciyalar-sotib-olinisi-tgrisidagi-axborotlar">АKSIYALAR&ndash;&gt;-->
+<!--&lt;!&ndash;                            SOTIB OLINISHI TO‘G‘RISIDAGI AXBOROTLAR</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="header-nav__link drop" href="/">Aksiyadorlar va sarmoyadorlar uchun</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="site-map">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="site-map-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <svg fill="#000000" height="30px" width="30px" version="1.1" id="Capa_1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 viewBox="0 0 490 490" space="preserve">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <g>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <path d="M480,277.715h-38.756v-38.859c0-5.521-4.478-10-10-10H255v-23.91h74.56c5.523,0,10-4.477,10-10v-90.166   c0-5.521-4.477-10-10-10H160.438c-5.522,0-10,4.479-10,10v90.166c0,5.523,4.478,10,10,10H235v23.91H58.756c-5.522,0-10,4.479-10,10   v38.859H10c-5.523,0-10,4.477-10,10v97.506c0,5.521,4.477,10,10,10h97.51c5.523,0,10-4.479,10-10v-97.506c0-5.523-4.477-10-10-10   H68.756v-28.859H235v28.859h-38.758c-5.523,0-10,4.477-10,10v97.506c0,5.521,4.477,10,10,10h97.514c5.522,0,10-4.479,10-10v-97.506   c0-5.523-4.478-10-10-10H255v-28.859h166.244v28.859h-38.758c-5.522,0-10,4.477-10,10v97.506c0,5.521,4.478,10,10,10H480   c5.522,0,10-4.479,10-10v-97.506C490,282.191,485.522,277.715,480,277.715z M170.438,114.779H319.56v70.166H170.438V114.779z    M97.51,375.221H20v-77.506h77.51V375.221z M283.756,375.221h-77.514v-77.506h77.514V375.221z M470,375.221h-77.514v-77.506H470   V375.221z"></path>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </g>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </svg>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash; Page Content &ndash;&gt;-->
+<!--{% block content %}-->
+<!--{% endblock %}-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="bg-dark text-light py-4 mt-5">-->
+<!--    <div class="container text-center">-->
+<!--        <p>&copy; 2025 TPP. Barcha huquqlar himoyalangan.</p>-->
+<!--    </div>-->
+<!--</footer>-->
+
+<!--&lt;!&ndash; JS &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>-->
+<!--{% block extra_js %}-->
+<!--{% endblock %}-->
+
+<!--</body>-->
+<!--</html>-->
+

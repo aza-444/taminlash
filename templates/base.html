@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="{{ request.LANGUAGE_CODE|default:'uz' }}">
+<head>
+   <div class="container">
+<header class="header">
+    <div class="container header-top">
+        <a class="header__brand" href="/">
+            <img src="/static/media/TPP logo 2.ccbd96b2.svg" alt="">
+            <span>“O'ZENERGOTA'MINLASH” AKSIYADORLIK JAMIYATI</span>
+        </a>
+        <form action="{% url 'set_language' %}" method="post" class="header__lang-form">
+            {% csrf_token %}
+            <select name="language" onchange="this.form.submit()">
+                <option value="uz" {% if request.LANGUAGE_CODE == 'uz' %}selected{% endif %}>O'zbek</option>
+                <option value="ru" {% if request.LANGUAGE_CODE == 'ru' %}selected{% endif %}>Русский</option>
+            </select>
+        </form>
+        <a href="tel:+998712301273" class="header__number">
+            <img src="{% static 'images/telephone-call.svg' %}" alt="Phone">
+            <div>
+                <span class="phone-label">Ishonch telefoni</span>
+                <span class="phone-numbers">+99871 230 12 73 &nbsp; +99855 510 15 09</span>
+            </div>
+        </a>
+    </div>
+    </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}IES AJ{% endblock %}</title>
+
+    <!-- Fonts (Google) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    {% block extra_css %}{% endblock %}
+    </div>
+
+    <nav class="header-nav container">
+        <ul class="header-nav__list">
+            <li><a href="/" class="header-nav__link">Bosh sahifa</a></li>
+            <!-- boshqa linklar -->
+        </ul>
+    </nav>
+</header>
+      <!-- HEADER -->
+
+</head>
+<body>
+
+
+<!-- HERO (Swiper) -->
+<section class="hero">
+    <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
+            {% for slide in slides %}
+            <div class="swiper-slide">
+                <img src="{{ slide.image.url }}" alt="{{ slide.title }}">
+                <div class="hero-caption">
+                    <h1>{{ slide.title }}</h1>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Navigation / Pagination -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>
